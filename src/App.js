@@ -1,9 +1,12 @@
 import React from "react";
+import Create from "./Components/Create";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Navbar />
+      <Create />
     </div>
   );
 }
