@@ -11,9 +11,11 @@ const Create = () => {
     setExpanded(true);
   }
 
+
+
   return (
     <div>
-      <form className="relative w-[480px] mx-auto my-16 shadow-md  border">
+      <form  className="relative w-[480px] mx-auto my-16 shadow-md border">
         {isExpanded && (
           <input
             className="w-full p-3 border-none outline-none"
