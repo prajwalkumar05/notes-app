@@ -1,41 +1,65 @@
 import React, { useState } from "react";
 
-const Create = () => {
+const Create = ({ getNotes }) => {
   const [isExpanded, setExpanded] = useState(false);
 
-  const [title, setTitle] = useState("");
-  const [note, setNote] = useState("");
-  console.log(note, title);
+  const [note, setnote] = useState({
+    title: "",
+    content: "",
+  });
+
+  console.log(note);
+
+  function changeValue(event) {
+    const { name, value } = event.target;
+
+    setnote((p) => {
+      // console.log(p)
+      return {
+        ...p,
+        [name]: value,
+      };
+    });
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getNotes(note);
+  };
 
   function expand() {
     setExpanded(true);
   }
 
-
-
   return (
     <div>
-      <form  className="relative w-[480px] mx-auto my-16 shadow-md border">
+      <form className="relative w-[480px] mx-auto my-16 shadow-md border">
         {isExpanded && (
           <input
             className="w-full p-3 border-none outline-none"
+            value={note.title}
             name="title"
             placeholder="Title"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={changeValue}
           />
         )}
 
         <textarea
           className="w-full p-3 border-none outline-none"
           onClick={expand}
-          onChange={(e) => setNote(e.target.value)}
+          value={note.content}
           name="content"
+          onChange={changeValue}
           placeholder="Take a note..."
           rows={isExpanded ? 3 : 1}
         />
-      </form>
 
-      
+        {isExpanded && (
+          <button onClick={handleSubmit} className="btn">
+            Add
+          </button>
+        )}
+      </form>
     </div>
   );
 };

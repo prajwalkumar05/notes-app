@@ -7,14 +7,25 @@ import Singlenote from "./Components/Singlenote";
 function App() {
 
   const [notes,setNotes] = useState([])
+  console.log(notes)
+
+  const getNotes = (item) =>{
+    console.log(item)
+
+    setNotes((pre) =>{
+      return [...pre,item]
+    })
+  }
 
 
 
   return (
     <>
       <Navbar />
-      <Create  />
-      <Singlenote />
+      <Create getNotes={getNotes} />
+      {notes.map((item,index) =>{
+            return <Singlenote key={index} id={index} title={item.title} content={item.content} />
+        })}
     </>
   );
 }
