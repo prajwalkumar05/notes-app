@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiFillDelete } from 'react-icons/ai';
 
 const Create = ({ getNotes }) => {
   const [isExpanded, setExpanded] = useState(false);
@@ -32,8 +33,8 @@ const Create = ({ getNotes }) => {
   }
 
   return (
-    <div>
-      <form className="relative w-[480px] mx-auto my-16 shadow-md border">
+    <div className="relative w-[80%] border my-16 mx-auto sm:w-[40%] ">
+      <div >
         {isExpanded && (
           <input
             className="w-full p-3 border-none outline-none"
@@ -55,11 +56,10 @@ const Create = ({ getNotes }) => {
         />
 
         {isExpanded && (
-          <button onClick={handleSubmit} className="btn">
-            Add
+          <button onClick={handleSubmit} className="btn">+
           </button>
         )}
-      </form>
+      </div>
     </div>
   );
 };

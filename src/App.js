@@ -17,15 +17,28 @@ function App() {
     })
   }
 
+  const del = (id) =>{
+    console.log(id)
+
+    setNotes(p=>{
+      return p.filter((n,i)=>{
+        return  i !== id
+      })
+  })
+  }
+
 
 
   return (
     <>
       <Navbar />
       <Create getNotes={getNotes} />
+      <div className="mx-16">
       {notes.map((item,index) =>{
-            return <Singlenote key={index} id={index} title={item.title} content={item.content} />
+            return <Singlenote key={index} id={index} title={item.title} content={item.content} del={del} />
         })}
+      </div>
+
     </>
   );
 }
